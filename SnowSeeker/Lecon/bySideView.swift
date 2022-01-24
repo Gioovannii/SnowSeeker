@@ -10,12 +10,16 @@ import SwiftUI
 struct bySideView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: Text("New Secondary")) {
+            NavigationLink {
+                Text("New Secondary")
+            } label: {
                 Text("Hello, World!")
             }
             .navigationTitle("Primary")
             
             Text("Secondary")
+            
+            Text("Tertiary")
         }
     }
 }
