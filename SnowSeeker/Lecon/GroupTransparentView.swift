@@ -12,8 +12,9 @@ struct UserView: View {
         Group {
             Text("Name: Paul")
             Text("Country: England")
-            Text("Pets: Luna, Arya, and Toby")
+            Text("Pets: Luna and Arya")
         }
+        .font(.title)
     }
 }
 
@@ -25,7 +26,7 @@ struct GroupTransparentView: View {
         Group {
             if sizeClass == .compact {
                 VStack(content: UserView.init)
-            
+                
             } else {
                 HStack(content: UserView.init)
             }
