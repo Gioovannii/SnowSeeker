@@ -14,16 +14,21 @@ struct User: Identifiable {
 
 struct AlertAndSheetView: View {
     @State private var selectedUser: User? = nil
-    
+    @State private var isShowingUser = false
     var body: some View {
         Text("Hello, World!")
             .onTapGesture {
                 selectedUser = User()
+                isShowingUser.toggle()
             }
-            .alert(item: $selectedUser) { user in
-                Alert(title: Text(user.id))
-                
-            }
+            .alert("Welcome", isPresented: $isShowingUser) { }
+//            .alert("Welcome", isPresented: $isShowingUser, presenting: selectedUser) { user in
+//                Button(user.id) { }
+//            }
+        
+//            .sheet(item: $selectedUser) { user in
+//                Text(user.id)
+//            }
     }
 }
 
