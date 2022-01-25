@@ -6,7 +6,8 @@
 //
 
 import Foundation
-class Favorite: ObservableObject {
+
+class Favorites: ObservableObject {
     private var resorts: Set<String>
     
     private let saveKey = "Favorites"
@@ -27,4 +28,13 @@ class Favorite: ObservableObject {
         save()
     }
     
+    func remove(_ resort: Resort) {
+        objectWillChange.send()
+        resorts.remove(resort.id)
+        save()
+    }
+    
+    func save() {
+        // write our data
+    }
 }

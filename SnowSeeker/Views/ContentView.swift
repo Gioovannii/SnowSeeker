@@ -18,6 +18,7 @@ extension View {
 }
 
 struct ContentView: View {
+    @ObservedObject var favorites = Favorites()
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
     @State private var searchText = ""

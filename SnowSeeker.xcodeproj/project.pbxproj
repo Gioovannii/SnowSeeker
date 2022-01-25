@@ -23,7 +23,7 @@
 		7BBFD95C279A4C7A00F5D89D /* AlertAndSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBFD95B279A4C7A00F5D89D /* AlertAndSheetView.swift */; };
 		7BBFD95E279A4FD100F5D89D /* GroupTransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBFD95D279A4FD100F5D89D /* GroupTransparentView.swift */; };
 		7BC26E28279F8BD000E30FC9 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC26E27279F8BD000E30FC9 /* Facility.swift */; };
-		7BC26E2A279FA4D000E30FC9 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC26E29279FA4D000E30FC9 /* Favorite.swift */; };
+		7BC26E2A279FA4D000E30FC9 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC26E29279FA4D000E30FC9 /* Favorites.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		7BBFD95B279A4C7A00F5D89D /* AlertAndSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAndSheetView.swift; sourceTree = "<group>"; };
 		7BBFD95D279A4FD100F5D89D /* GroupTransparentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTransparentView.swift; sourceTree = "<group>"; };
 		7BC26E27279F8BD000E30FC9 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
-		7BC26E29279FA4D000E30FC9 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		7BC26E29279FA4D000E30FC9 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			children = (
 				7BB0BA3F279E4A0500993027 /* Resort.swift */,
 				7BC26E27279F8BD000E30FC9 /* Facility.swift */,
-				7BC26E29279FA4D000E30FC9 /* Favorite.swift */,
+				7BC26E29279FA4D000E30FC9 /* Favorites.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BB0BA3C279E444000993027 /* SearchableView.swift in Sources */,
-				7BC26E2A279FA4D000E30FC9 /* Favorite.swift in Sources */,
+				7BC26E2A279FA4D000E30FC9 /* Favorites.swift in Sources */,
 				7BBFD94D279A48CE00F5D89D /* ContentView.swift in Sources */,
 				7BB0BA40279E4A0500993027 /* Resort.swift in Sources */,
 				7BB0BA43279E4B7000993027 /* Bundle-Decodable.swift in Sources */,
