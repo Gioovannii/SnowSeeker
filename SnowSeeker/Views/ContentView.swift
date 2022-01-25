@@ -46,6 +46,14 @@ struct ContentView: View {
                         Text("\(resort.runs) runs")
                             .foregroundColor(.secondary)
                     }
+                    .layoutPriority(1)
+                    
+                    if favorites.contains(resort) {
+                        Spacer()
+                        Image(systemName: "heart.fill")
+                            .accessibilityLabel(Text("This is a favorite resort"))
+                            .foregroundColor(.red)
+                    }
                 }
             }
             .navigationTitle("Resorts")
@@ -54,6 +62,7 @@ struct ContentView: View {
             WelcomeView()
         }
         //        .phoneOnlyNavigationView()
+        .environmentObject(favorites)
     }
     
     var filteredResorts: [Resort] {
