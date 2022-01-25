@@ -46,13 +46,21 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                
             }
             .navigationTitle("Resorts")
-
+            .searchable(text: $searchText, prompt: "Search for a resort")
+            
             WelcomeView()
         }
-//        .phoneOnlyNavigationView()
+        //        .phoneOnlyNavigationView()
+    }
+    
+    var filteredResorts: [Resort] {
+        if searchText.isEmpty {
+            return resorts
+        } else {
+            return resorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
     }
 }
 
