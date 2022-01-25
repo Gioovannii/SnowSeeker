@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResortView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
     let resort: Resort
     
     var body: some View {
@@ -17,6 +18,15 @@ struct ResortView: View {
                     .resizable()
                     .scaledToFit()
                 
+                HStack {
+                        ResortsDetailView(resort: resort)
+                        SkiDetailsView(resort: resort)
+                }
+                .padding(.vertical)
+                .background(Color.primary.opacity(0.1))
+                
+                // MARK: - Description
+
                 Group {
                     Text(resort.description)
                         .padding(.vertical)
@@ -24,8 +34,14 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
                     
-                    Text(resort.facilities.joined(separator: ", "))
-                        .padding(.vertical)
+                    HStack {
+                        ForEach(resort.facilities, id: \.self) { facility in
+                            Facility.icon(for: facility)
+                                .font(.title)
+                        }
+                    }
+//                    Text(resort.facilities, format: .list(type: .and))
+//                        .padding(.vertical)
                 }
                 .padding(.horizontal)
             }
