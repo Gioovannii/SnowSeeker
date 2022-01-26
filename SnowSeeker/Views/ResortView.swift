@@ -20,9 +20,20 @@ struct ResortView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Image(decorative: resort.id)
-                    .resizable()
-                    .scaledToFit()
+                ZStack(alignment: .bottomTrailing) {
+                    Image(decorative: resort.id)
+                        .resizable()
+                        .scaledToFit()
+                    
+                    Text(resort.imageCredit.uppercased())
+                        .font(.caption)
+                        .fontWeight(.black)
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(.black.opacity(0.75))
+                        .clipShape(Capsule())
+                        .offset(x: -5, y: -5)
+                }
                 
                 HStack {
                     if sizeClass == .compact && typeSize > .large {
@@ -59,17 +70,19 @@ struct ResortView: View {
                     }
                     //                    Text(resort.facilities, format: .list(type: .and)
                     //                        .padding(.vertical)
+                    
+                    
+                    Button(favorites.contains(resort) ? "Remove from favorites" : "Add to favorites") {
+                        if favorites.contains(resort) {
+                            favorites.remove(resort)
+                        } else {
+                            favorites.add(resort)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
                 }
                 .padding(.horizontal)
-                
-                Button(favorites.contains(resort) ? "Remove from favorites" : "Add to favorites") {
-                    if favorites.contains(resort) {
-                        favorites.remove(resort)
-                    } else {
-                        favorites.add(resort)
-                    }
-                }
-                .padding()
             }
         }
         .navigationTitle("\(resort.name), \(resort.country)")
@@ -85,7 +98,8 @@ struct ResortView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ResortView(resort: Resort.example)
-                .environmentObject(Favorites())
         }
+        .environmentObject(Favorites())
+        
     }
 }
