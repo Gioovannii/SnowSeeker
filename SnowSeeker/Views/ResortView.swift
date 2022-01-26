@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ResortView: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
-    @EnvironmentObject var favorites: Favorites
-    @State private var selectedFacility: Facility?
-    
     let resort: Resort
+    
+    @Environment(\.horizontalSizeClass) var sizeClass
+    @Environment(\.dynamicTypeSize) var typeSize
+    @EnvironmentObject var favorites: Favorites
+    
+    @State private var selectedFacility: Facility?
+    @State private var showingFacility = false
     
     var body: some View {
         ScrollView {
@@ -22,14 +25,20 @@ struct ResortView: View {
                     .scaledToFit()
                 
                 HStack {
+                    if sizeClass == .compact && typeSize > .large {
+                        VStack(spacing: 10) { ResortsDetailView(resort: resort) }
+                        VStack(spacing: 10) { SkiDetailsView(resort: resort) }
+                    } else {
                         ResortsDetailView(resort: resort)
                         SkiDetailsView(resort: resort)
+                    }
                 }
                 .padding(.vertical)
                 .background(Color.primary.opacity(0.1))
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 
                 // MARK: - Description
-
+                
                 Group {
                     Text(resort.description)
                         .padding(.vertical)
@@ -39,15 +48,17 @@ struct ResortView: View {
                     
                     HStack {
                         ForEach(resort.facilityTypes) { facility in
-                            facility.icon
-                                .font(.title)
-                                .onTapGesture {
-                                    selectedFacility = facility
-                                }
+                            Button {
+                                selectedFacility = facility
+                                showingFacility = true
+                            } label: {
+                                facility.icon
+                                    .font(.title)
+                            }
                         }
                     }
-//                    Text(resort.facilities, format: .list(type: .and))
-//                        .padding(.vertical)
+                    //                    Text(resort.facilities, format: .list(type: .and)
+                    //                        .padding(.vertical)
                 }
                 .padding(.horizontal)
                 
@@ -63,8 +74,9 @@ struct ResortView: View {
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
-        .alert(item: $selectedFacility) { facility in
-            facility.alert
+        .alert(selectedFacility?.name ?? "More information", isPresented: $showingFacility, presenting: selectedFacility) { _ in
+        } message: { facility in
+            Text(facility.description)
         }
     }
 }
