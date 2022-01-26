@@ -9,7 +9,6 @@ import Foundation
 
 class Favorites: ObservableObject {
     private var resorts: Set<String>
-    
     private let saveKey = "Favorites"
 
     init() {
